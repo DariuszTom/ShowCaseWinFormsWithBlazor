@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShowCaseShared\ShowCaseShared.csproj" />
+    <ProjectReference Include="..\..\ShowCaseShared\ShowCaseShared.csproj" />
   </ItemGroup>
 
 </Project>
