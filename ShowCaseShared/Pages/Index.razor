@@ -1,0 +1,126 @@
+@page "/"
+@using ShowCaseShared.Services
+@inject CounterService CounterService
+@implements IDisposable
+
+<div class="container">
+    <h1>&#x1F680; Blazor Inside WinForms</h1>
+    <div class="subtitle">Modern Web UI in Desktop Application</div>
+
+    <div class="author">
+        <strong>&#x1F468;&#x200D;&#x1F4BB; Showcase Project - .NET 10</strong>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <div class="emoji">&#x1F5A5;&#xFE0F;</div>
+            <div class="feature-title">WinForms</div>
+            <div class="feature-description">Desktop Host</div>
+        </div>
+        <div class="feature">
+            <div class="emoji">&#x26A1;</div>
+            <div class="feature-title">Blazor</div>
+            <div class="feature-description">Web UI Framework</div>
+        </div>
+        <div class="feature">
+            <div class="emoji">&#x1F3A8;</div>
+            <div class="feature-title">Modern CSS</div>
+            <div class="feature-description">Glassmorphism</div>
+        </div>
+        <div class="feature">
+            <div class="emoji">&#x1F4F1;</div>
+            <div class="feature-title">Responsive</div>
+            <div class="feature-description">Adaptive Layout</div>
+        </div>
+        <div class="feature">
+            <div class="emoji">&#x1F525;</div>
+            <div class="feature-title">Interactive</div>
+            <div class="feature-description">Real-time Updates</div>
+        </div>
+        <div class="feature">
+            <div class="emoji">&#x1F3AF;</div>
+            <div class="feature-title">.NET 10</div>
+            <div class="feature-description">Latest Technology</div>
+        </div>
+    </div>
+
+    <div class="counter-section @clickAnimation">
+        <h2>&#x1F3AE; Interactive Blazor Component</h2>
+        <div class="counter-value @(CounterService.CurrentCount > 0 ? "pulse" : "")">@CounterService.CurrentCount</div>
+        
+        <button type="button" class="counter-button" @onclick="OnIncrementClicked">
+            Click Me! &#x1F389;
+        </button>
+        
+        @if (CounterService.CurrentCount > 0)
+        {
+            <button type="button" class="reset-button" @onclick="OnResetClicked">
+                Reset &#x1F501;
+            </button>
+        }
+        
+        <p style="margin-top: 1rem; opacity: 0.9;">
+            @((MarkupString)GetMessageWithUnicodeEmojis())
+        </p>
+        
+        @if (CounterService.ShowCelebration)
+        {
+            <div class="celebration">&#x1F389; &#x1F38A; &#x1F38B; &#x1F389;</div>
+        }
+    </div>
+
+    <div>
+        <span class="tech-badge winforms">&#x1F5A5;&#xFE0F; Windows Forms</span>
+        <span class="tech-badge blazor">&#x26A1; Blazor WebView</span>
+        <span class="tech-badge">&#x1F3A8; CSS3</span>
+    </div>
+
+    <div class="footer">
+        <p>&#x1F4C5; Created: @DateTime.Now.ToString("MMMM yyyy")</p>
+        <p>&#x1F393; WinForms + Blazor Integration Showcase</p>
+        <p style="margin-top: 0.5rem;">&#x1F4A1; Combining the best of desktop and web technologies</p>
+    </div>
+</div>
+
+@code {
+    private string clickAnimation = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        CounterService.OnStateChanged += OnCounterStateChanged;
+    }
+
+    private void OnCounterStateChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private async Task OnIncrementClicked(MouseEventArgs _)
+    {
+        clickAnimation = "click-pulse";
+        StateHasChanged();
+        await CounterService.IncrementCountAsync();
+        await Task.Delay(300);
+        clickAnimation = string.Empty;
+        StateHasChanged();
+    }
+
+    private void OnResetClicked(MouseEventArgs _)
+    {
+        CounterService.Reset();
+        clickAnimation =string.Empty;
+    }
+
+    private string GetMessageWithUnicodeEmojis()
+    {
+        var message = CounterService.GetCounterMessage();
+        var count = CounterService.CurrentCount.ToString();
+        message = message.Replace(count, $"<strong>{count}</strong>");
+        return message;
+    }
+
+    public void Dispose()
+    {
+        CounterService.OnStateChanged -= OnCounterStateChanged;
+    }
+}

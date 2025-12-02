@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statyczna Strona AWS S3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 2rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .author {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            border-left: 4px solid #feca57;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .feature {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .aws-logo {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #ff9500;
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .aws-logo:hover {
+            background: #e6850e;
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Static Website in S3</h1>
+        <div class="subtitle">Technologie Chmurowe - Laboratorium</div>
+        
+        <div class="author">
+            <strong>👨‍💻 Autor: Dariusz Tomczak</strong>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="emoji">☁️</div>
+                <div>AWS S3</div>
+                <small>Static Hosting</small>
+            </div>
+            <div class="feature">
+                <div class="emoji">🎨</div>
+                <div>Modern CSS</div>
+                <small>Glassmorphism</small>
+            </div>
+            <div class="feature">
+                <div class="emoji">📱</div>
+                <div>Responsive</div>
+                <small>Mobile Ready</small>
+            </div>
+            <div class="feature">
+                <div class="emoji">⚡</div>
+                <div>Fast Loading</div>
+                <small>Optimized</small>
+            </div>
+        </div>
+        
+        <a href="#" class="aws-logo">🔗 Powered by AWS S3</a>
+        
+        <div class="footer">
+            <p>📅 Created: November 2025</p>
+            <p>🎓 Projekt studencki - Technologie Chmurowe</p>
+        </div>
+    </div>
+
+    <script>
+        // Dodaj interaktywność
+        document.addEventListener('DOMContentLoaded', function() {
+            const features = document.querySelectorAll('.feature');
+            
+            features.forEach((feature, index) => {
+                feature.style.animationDelay = `${index * 0.2}s`;
+                feature.style.animation = 'fadeInUp 0.6s ease forwards';
+            });
+        });
+
+        // CSS animation dla fadeInUp
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
