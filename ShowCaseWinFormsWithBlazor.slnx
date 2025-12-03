@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="ShowCaseShared/ShowCaseShared.csproj" />
-  <Project Path="ShowCaseWeb/ShowCaseWeb.csproj" />
+  <Project Path="ShowCaseWeb/ShowCaseWebServer.csproj" />
+  <Project Path="ShowCaseWebAsembly/ShowCaseWebAsembly.csproj" Id="63cf699a-0bbd-488f-915d-54ce93668fca" />
   <Project Path="ShowCaseWinFormsWithBlazor/ShowCaseWinFormsWithBlazor.csproj" />
 </Solution>
