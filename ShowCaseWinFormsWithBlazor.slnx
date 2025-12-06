@@ -1,4 +1,7 @@
 <Solution>
+  <Project Path="ShowCaseMobile/ShowCaseMobile.csproj" Id="cf33432b-2f23-4010-854a-74e356bf304e">
+    <Deploy />
+  </Project>
   <Project Path="ShowCaseShared/ShowCaseShared.csproj" />
   <Project Path="ShowCaseWeb/ShowCaseWebServer.csproj" />
   <Project Path="ShowCaseWebAsembly/ShowCaseWebAsembly.csproj" Id="63cf699a-0bbd-488f-915d-54ce93668fca" />
