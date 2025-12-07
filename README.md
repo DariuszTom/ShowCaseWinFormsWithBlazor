@@ -44,7 +44,7 @@ A multi-platform Blazor showcase targeting .NET 10. It demonstrates sharing a si
 
 ## Run
 1. Ensure .NET 10 SDK.
-2. Open the solution in Visual Studio 2025+.
+2. Open the solution in Visual Studio.
 3. Start any host:
    - WebAssembly: `ShowCaseWebAsembly`
    - Server: `ShowCaseWeb`
