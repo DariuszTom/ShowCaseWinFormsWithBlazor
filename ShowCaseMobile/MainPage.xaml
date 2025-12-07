@@ -4,7 +4,7 @@
              xmlns:shared="clr-namespace:ShowCaseShared;assembly=ShowCaseShared"
              x:Class="ShowCaseMobile.MainPage">
 
-    <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html">
+    <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot\\index.html">
         <BlazorWebView.RootComponents>
             <RootComponent Selector="#app" ComponentType="{x:Type shared:App}" />
         </BlazorWebView.RootComponents>
